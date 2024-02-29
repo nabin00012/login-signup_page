@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Signup Page</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(to right, #3498db, #8e44ad);
+        overflow: hidden;
+      }
+
+      .login-container {
+        position: relative;
+        width: 300px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .login-fields,
+      .signup-fields {
+        width: 100%;
+      }
+
+      .signup-fields {
+        display: none;
+      }
+      p {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-fields" id="loginFields">
+        <h2>Login</h2>
+        <label for="username"></label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+        />
+
+        <label for="password"></label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+
+        <button type="button" onclick="validateLogin()">Login</button>
+        <p onclick="toggleForm('signupFields')">
+          Don't have an account? Signup here
+        </p>
+      </div>
+
+      <div class="signup-fields" id="signupFields">
+        <h2>Signup</h2>
+        <label for="name"></label>
+        <input type="text" id="name" name="name" placeholder="Your Name" />
+
+        <label for="email"></label>
+        <input type="email" id="email" name="email" placeholder="Your Email" />
+
+        <label for="signupPassword"></label>
+        <input
+          type="password"
+          id="signupPassword"
+          name="signupPassword"
+          placeholder="Password"
+        />
+
+        <label for="confirmPassword"></label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+        />
+
+        <button type="button" onclick="validateSignup()">Signup</button>
+        <p onclick="toggleForm('loginFields')">
+          Already have an account? Login here
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function validateLogin() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        // Basic validation (you should implement server-side validation in a real application)
+        if (username === "example" && password === "password") {
+          alert("Login successful!");
+          // Here, you can redirect to another page or perform other actions
+        } else {
+          alert("Invalid username or password. Please try again.");
+        }
+      }
+
+      function validateSignup() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("signupPassword").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Basic validation (you should implement server-side validation in a real application)
+        if (password !== confirmPassword) {
+          alert("Password and Confirm Password do not match.");
+        } else {
+          alert("Signup successful!");
+          // Here, you can redirect to another page or perform other actions
+        }
+      }
+
+      function toggleForm(formId) {
+        document.getElementById("loginFields").style.display =
+          formId === "loginFields" ? "block" : "none";
+        document.getElementById("signupFields").style.display =
+          formId === "signupFields" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>
